@@ -136,6 +136,7 @@
     <ClInclude Include="admin.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="navigation.h" />
+    <ClInclude Include="teacher.h" />
     <ClInclude Include="user.h" />
     <ClInclude Include="course.h" />
   </ItemGroup>

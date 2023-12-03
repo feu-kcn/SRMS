@@ -21,6 +21,9 @@
     <ClCompile Include="SRMS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Downloads\libfort\fort.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="user.h">
@@ -34,6 +37,15 @@
     </ClInclude>
     <ClInclude Include="admin.h">
       <Filter>Source Files\admin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Downloads\libfort\fort.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="course.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="teacher.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

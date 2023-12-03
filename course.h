@@ -216,6 +216,19 @@ void removeExamResult(ExamResult examResult) {
 	examResults.erase(remove(examResults.begin(), examResults.end(), examResult), examResults.end());
 }
 
+// Get all exams for a course
+vector<Exam> getExamsByCourse(Course course) {
+	vector<Exam> examsByCourse = {};
+
+	for (Exam exam : exams) {
+		if (exam.course == course) {
+			examsByCourse.push_back(exam);
+		}
+	}
+
+	return examsByCourse;
+}
+
 // Get all exam results for a course from a student
 vector<ExamResult> getExamResultsByCourseAndStudent(Course course, User student) {
 	vector<ExamResult> examResultsByCourseAndStudent = {};

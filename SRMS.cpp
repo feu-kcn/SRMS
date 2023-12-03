@@ -9,11 +9,18 @@
 #include <functional>
 #include <stack>
 #include <unordered_map>
+
+// Classes
 #include "user.h"
+#include "course.h"
+
+// Helpers
 #include "navigation.h"
 #include "menu.h"
+
+// Pages
 #include "admin.h"
-#include "course.h"
+#include "teacher.h"
 
 using namespace std;
 
@@ -34,7 +41,7 @@ void homepage() {
 			adminHomepage();
 			break;
 		case teacher:
-			// teacherHomepage();
+			TeacherScreen();
 			break;
 		case student:
 			// studentHomepage();
@@ -79,7 +86,7 @@ int main()
 {
 	initialize();
 	// loggedInUser = login();
-	loggedInUser = users[0];
+	loggedInUser = users[1];
 	cout << "Logged in user: " << loggedInUser.name;
 
 	displayScreen(homepage);
