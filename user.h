@@ -103,6 +103,32 @@ void UpdateUser(User user) {
 	}
 }
 
+// Method for fetching User(s) with type of teacher
+vector<User> GetTeachers() {
+	vector<User> teachers = {};
+
+	for (User user : users) {
+		if (user.isTeacher()) {
+			teachers.push_back(user);
+		}
+	}
+
+	return teachers;
+}
+
+// Method for fetching User(s) with type of student
+vector<User> GetStudents() {
+	vector<User> students = {};
+
+	for (User user : users) {
+		if (user.isStudent()) {
+			students.push_back(user);
+		}
+	}
+
+	return students;
+}
+
 void initialize() {
 	// Create dummy user accounts for testing
 	User adminUser = createUser("Admin", "admin", admin);

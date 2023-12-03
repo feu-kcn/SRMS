@@ -1,6 +1,7 @@
 #pragma once
 #include "menu.h"
 #include "user.h"
+#include "fort.hpp"
 
 using namespace std;
 
@@ -24,8 +25,8 @@ MenuOptions homepageMenu = {
 
 MenuOptions manageUsersMenu = {
 	{"Create", adminCreateUser},
-	{"List All Teacher", test},
-	{"List All Student", test},
+	{"List All Teacher", listAllTeacher},
+	{"List All Student", listAllStudent},
 	{"Update Name", test},
 	{"Delete", test}
 };
@@ -85,9 +86,33 @@ void adminCreateUser() {
 }
 
 void listAllTeacher() {
+	fort::char_table table;
+	table << fort::header
+		<< "ID" << "Name" << "Managed Courses" << fort::endr;
 
+	for (User user : GetTeachers()) {
+		table << user.id << user.name << "CCS0003L" << fort::endr;
+	}
+
+	std::cout << table.to_string() << std::endl;
+
+	system("pause");
+
+	goBack();
 }
 
 void listAllStudent() {
+	fort::char_table table;
+	table << fort::header
+		<< "ID" << "Name" << "Enrolled Courses" << fort::endr;
 
+	for (User user : GetStudents()) {
+		table << user.id << user.name << "CCS0003L" << fort::endr;
+	}
+
+	std::cout << table.to_string() << std::endl;
+
+	system("pause");
+
+	goBack();
 }
