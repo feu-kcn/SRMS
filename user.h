@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <algorithm>
+
 using namespace std;
 
 // Define user types available in our application
@@ -82,6 +84,23 @@ User createUser(string name, string password, userType type) {
 	user.id = pad + to_string(newId);
 
 	return user;
+}
+
+// Method to add user
+void AddUser(User user) {
+	users.push_back(user);
+}
+
+// Method to delete user
+void DeleteUser(User user) {
+	users.erase(remove(users.begin(), users.end(), user), users.end());
+}
+
+// Method to update user
+void UpdateUser(User user) {
+	for (int i = 0; i < users.size(); i++) {
+		users[i] = user;
+	}
 }
 
 void initialize() {

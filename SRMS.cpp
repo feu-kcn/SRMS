@@ -13,6 +13,8 @@
 #include "navigation.h"
 #include "menu.h"
 
+#include "admin.h"
+
 using namespace std;
 
 vector<User> users = {};
@@ -20,51 +22,32 @@ User loggedInUser;
 stack<ScreenFunc> navigation;
 using Option = pair<std::string, std::function<void()>>;
 
-void test() {
-	cout << "Test";
-}
-
-void createUsers() {
-	cout << "Creating users";
-
-	vector<Option> menuOptions = {
-		{"Delete", test},
-		{"List All", test},
-		{"Update", test}
-	};
-
-	displayMenu(menuOptions);
-}
-
-void viewCourses() {
-	cout << "Viewing courses";
-}	
-
 void homepage() {
-	cout << "Homepage";
-
-	vector<Option> menuOptions = {
-		{"Create Users", createUsers},
-		{"View Courses", viewCourses}
-	};
-
-	displayMenu(menuOptions);
+	switch (loggedInUser.type)
+	{
+		case admin:
+			adminHomepage();
+			break;
+		case teacher:
+			// teacherHomepage();
+			break;
+		case student:
+			// studentHomepage();
+			break;
+		default:
+			break;
+	}
 }
-
-
 
 int main()
 {
-	// initialize();
+	initialize();
 	// loggedInUser = login();
-	// cout << "Logged in user: " << loggedInUser.name;
-
-	// displayScreen(homepage);
+	// loggedInUser = users[0];
+	cout << "Logged in user: " << loggedInUser.name;
 
 	displayScreen(homepage);
 	
-	
-
 	return 0;
 
 }

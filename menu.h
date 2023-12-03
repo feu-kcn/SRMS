@@ -15,6 +15,7 @@ void exitApp() {
 	exit(0);
 }
 
+// Displays the menu, and ask for choice
 void displayMenu(MenuOptions menuOptions) {
 	bool backAvailable = false;
 	// Add back option if we can go back
@@ -28,9 +29,9 @@ void displayMenu(MenuOptions menuOptions) {
 
 	cout << endl << endl;
 
-	// Print options horizontally with index, with even spacing
+	// Print options vertically with index
 	for (size_t i = 0; i < menuOptions.size(); ++i) {
-		cout << "[" << i + 1 << "]" << " " << menuOptions[i].first << "\t";
+		cout << "[" << i + 1 << "]" << " " << menuOptions[i].first << "\n";
 	}
 
 	// Print new lines
