@@ -56,15 +56,18 @@ void initialize() {
 	// Create dummy user accounts for testing
 	User adminUser = createUser("Admin", "admin", admin);
 	User teacherUser = createUser("Teacher", "teacher", teacher);
-	User studentUser1 = createUser("Student 1", "student", student);
-	User studentUser2 = createUser("Student 2", "student", student);
-	User studentUser3 = createUser("Student 3", "student", student);
+
+	User studentUser1 = createUser("Student 1", "student1", student);
+	users.push_back(studentUser1);
+
+	User studentUser2 = createUser("Student 2", "student2", student);
+	users.push_back(studentUser2);
+
+	User studentUser3 = createUser("Student 3", "student3", student);
+	users.push_back(studentUser3);
 
 	users.push_back(adminUser);
 	users.push_back(teacherUser);
-	users.push_back(studentUser1);
-	users.push_back(studentUser2);
-	users.push_back(studentUser3);
 
 	Course course = createCourse("Programming", teacherUser, 10);
 	createAttendance(course, studentUser1);
@@ -82,15 +85,20 @@ void initialize() {
 	createAttendance(course, studentUser1);
 }
 
+void mainLogin() {
+	system("cls");
+
+	loggedInUser = login();
+
+	displayScreen(homepage);
+}
+
 
 int main()
 {
 	initialize();
-	// loggedInUser = login();
-	loggedInUser = users[2];
-	cout << "Logged in user: " << loggedInUser.name;
 
-	displayScreen(homepage);
+	mainLogin();
 	
 	return 0;
 

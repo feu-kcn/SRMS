@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <stack>
 #include <algorithm>
 #include "fort.hpp"
 
@@ -35,6 +36,7 @@ public:
 
 // Fetch global variable from entry file (SRMS.cpp)
 extern vector<User> users;
+extern User loggedInUser;
 
 // Function to get the number of users based on a type
 // For example: This is used when you want to get how many
@@ -157,30 +159,6 @@ User login() {
 	}
 }
 
-void displayTeachers() {
-	fort::char_table table;
-	table << fort::header
-		<< "ID" << "Name" << "Managed Courses" << fort::endr;
-
-	for (User user : GetTeachers()) {
-		table << user.id << user.name << "CCS0003L" << fort::endr;
-	}
-
-	std::cout << table.to_string() << std::endl;
-}
-
-void displayStudents() {
-	fort::char_table table;
-	table << fort::header
-		<< "ID" << "Name" << "Enrolled Courses" << fort::endr;
-
-	for (User user : GetStudents()) {
-		table << user.id << user.name << "CCS0003L" << fort::endr;
-	}
-
-	std::cout << table.to_string() << std::endl;
-}
-
 void displayUserTable() {
 	fort::char_table table;
 	table << fort::header
@@ -201,4 +179,10 @@ User getUserById(string id) {
 			break;
 		}
 	}
+}
+
+void logout() {
+	system("cls");
+
+	loggedInUser = login();
 }

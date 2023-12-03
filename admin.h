@@ -11,6 +11,7 @@ extern User loggedInUser;
 
 void manageUsers();
 void viewCourses();
+void createNewCourse();
 void adminCreateUser();
 void listAllTeacher();
 void listAllStudent();
@@ -20,6 +21,7 @@ void deleteUser();
 // Options
 MenuOptions homepageMenu = {
 	{"Manage Users", manageUsers},
+	{"Create Course", createNewCourse},
 	{"View Courses", viewCourses}
 };
 
@@ -31,6 +33,46 @@ MenuOptions manageUsersMenu = {
 	{"Update", updateUser},
 	{"Delete", deleteUser }
 };
+
+void displayTeachers() {
+	fort::char_table table;
+	table << fort::header
+		<< "ID" << "Name" << "Managed Courses" << fort::endr;
+
+	for (User user : GetTeachers()) {
+		// Join courses with comma
+		string coursesStr = "";
+		vector<Course> enrolledCourses = getCoursesByTeacher(user);
+		for (Course course : enrolledCourses) {
+			coursesStr += course.name + "  ";
+		}
+
+		table << user.id << user.name << coursesStr << fort::endr;
+	}
+
+	std::cout << table.to_string() << std::endl;
+}
+
+void displayStudents() {
+	fort::char_table table;
+	table << fort::header
+		<< "ID" << "Name" << "Enrolled Courses" << fort::endr;
+
+	for (User user : GetStudents()) {
+		// Join courses name with comma
+		string coursesStr = "";
+		vector<Course> enrolledCourses = getCoursesByStudent(user);
+		for(Course course : enrolledCourses) {
+			coursesStr += course.name + "  ";
+		}
+
+		table << user.id << user.name << coursesStr << fort::endr;
+
+
+	}
+
+	std::cout << table.to_string() << std::endl;
+}
 
 // helpers
 void listAllTeacher() {
@@ -47,6 +89,30 @@ void listAllStudent() {
 	system("pause");
 
 	goBack();
+}
+
+User chooseTeacher() {
+	displayTeachers();
+
+	string id;
+	while (true) {
+		cout << "Enter ID or \"B\" to go back: ";
+		cin >> id;
+
+		if (id == "B") {
+			goBack();
+		}
+		else {
+			for (User user : GetTeachers()) {
+				if (user.id == id) {
+					return user;
+					break;
+				}
+			}
+
+			cout << "Invalid ID entered!" << endl << endl;
+		}
+	}
 }
 
 User chooseUser() {
@@ -178,6 +244,28 @@ void deleteUser() {
 	system("pause");
 
 	goBack();
+}
+
+void createNewCourse()
+{
+	cout << "You are currently creating a new user." << endl << endl;
+
+	User selectedTeacher = chooseTeacher();
+
+	string name;
+	int maximumAttendance;
+
+	cout << "Enter course name: ";
+	cin >> name;
+
+	cout << "Enter maximum attendance: ";
+	cin >> maximumAttendance;
+
+	Course createdCourse = createCourse(name, selectedTeacher, maximumAttendance);
+
+	system("cls");
+
+	viewCourses();
 }
 
 void viewCourses() {

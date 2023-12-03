@@ -8,10 +8,6 @@ using namespace std;
 
 extern User loggedInUser;
 
-void test() {
-	cout << "test" << endl;
-}
-
 void viewTeacherCourses();
 void createStudentAttendance();
 void createCourseExam();
@@ -263,16 +259,15 @@ void deleteStudentAttendance() {
 
 void deleteStudentExamSubmission() {
 	Course course = selectCourse();
-	Exam exam = chooseExam(course);
 	User student = selectStudent(course);
 
 	vector<ExamResult> examResults = getExamResultsByCourseAndStudent(course, student);
 
 	fort::char_table table;
-	table << fort::header << "Exam Result ID" << "Score" << fort::endr;
+	table << fort::header << "Exam Result ID" << "Exam Name" << "Maximum Score" << "Score" << fort::endr;
 
 	for (int i = 0; i < examResults.size(); i++) {
-		table << examResults[i].id <<  examResults[i].score << fort::endr;
+		table << examResults[i].id << examResults[i].exam.name  << examResults[i].exam.maximumScore << examResults[i].score << fort::endr;
 	}
 
 	cout << table.to_string() << endl;

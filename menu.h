@@ -17,11 +17,14 @@ void exitApp() {
 
 // Displays the menu, and ask for choice
 void displayMenu(MenuOptions menuOptions) {
-	bool backAvailable = false;
-	// Add back option if we can go back
 	if (canGoBack()) {
-		backAvailable = true;
 		menuOptions.push_back({ "Back", goBack });
+	}
+	else {
+		// If we cannot go back, it means that we are at the main menu
+		// So we can add the logout option
+
+		menuOptions.push_back({ "Logout", logout });
 	}
 	
 	// Add exit option
@@ -57,7 +60,7 @@ void displayMenu(MenuOptions menuOptions) {
 
 			// We do not need to track the back option or exit
 			// Doing so, causes bugs :(
-			if (choiceIndex == size - 1 || (backAvailable && choiceIndex == size - 2)) {
+			if (choiceIndex == size - 1 || choiceIndex == size - 2) {
 				menuOptions[choiceIndex].second();
 			} else {
 				displayScreen(menuOptions[choiceIndex].second);
