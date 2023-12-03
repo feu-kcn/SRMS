@@ -2,7 +2,10 @@
 C:\Users\kirkcharlesniv\source\repos\SRMS\user.h(46,17): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
   (compiling source file 'SRMS.cpp')
   
-C:\Users\kirkcharlesniv\source\repos\SRMS\course.h(314,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\kirkcharlesniv\source\repos\SRMS\course.h(311,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  (compiling source file 'SRMS.cpp')
+  
+C:\Users\kirkcharlesniv\source\repos\SRMS\menu.h(50,12): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'SRMS.cpp')
   
 C:\Users\kirkcharlesniv\source\repos\SRMS\student.h(43,25): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data

@@ -3,12 +3,8 @@
 
 #include <iostream>
 #include <vector>
-#include <algorithm>
 #include <string>
-#include <map>
-#include <functional>
 #include <stack>
-#include <unordered_map>
 
 // Classes
 #include "user.h"
@@ -70,19 +66,18 @@ void initialize() {
 	users.push_back(teacherUser);
 
 	Course course = createCourse("Programming", teacherUser, 10);
-	createAttendance(course, studentUser1);
-	createAttendance(course, studentUser1);
-	createAttendance(course, studentUser1);
-	createAttendance(course, studentUser1);
-	createAttendance(course, studentUser1);
-	createAttendance(course, studentUser1);
-	createAttendance(course, studentUser1);
 	enrollStudentToCourse(studentUser1, course);
+	createAttendance(course, studentUser1);
+	createAttendance(course, studentUser1);
+	createAttendance(course, studentUser1);
+	createAttendance(course, studentUser1);
+	createAttendance(course, studentUser1);
+	createAttendance(course, studentUser1);
+	createAttendance(course, studentUser1);
+	createAttendance(course, studentUser1);
 
 	Exam midterm = createExam(course, "Midterm", 50);
 	ExamResult midtermResult = createExamResult(midterm, studentUser1, 40);
-
-	createAttendance(course, studentUser1);
 }
 
 void mainLogin() {

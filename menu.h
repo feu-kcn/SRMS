@@ -33,7 +33,7 @@ void displayMenu(MenuOptions menuOptions) {
 	cout << endl << endl;
 
 	// Print options vertically with index
-	for (size_t i = 0; i < menuOptions.size(); ++i) {
+	for (int i = 0; i < menuOptions.size(); ++i) {
 		cout << "[" << i + 1 << "]" << " " << menuOptions[i].first << "\n";
 	}
 
@@ -46,9 +46,8 @@ void displayMenu(MenuOptions menuOptions) {
 		cout << "Enter choice: ";
 		cin >> choice;
 		
-		// Get the size of the menu options
-		// size_t is an unsigned integer type
-		size_t size = menuOptions.size();
+		// Get the number of options available
+		int size = menuOptions.size();
 
 		if (choice > 0 && choice <= size) {
 			int choiceIndex = choice - 1;
