@@ -2,16 +2,15 @@
 #include "menu.h"
 #include "user.h"
 #include "fort.hpp"
+#include "course.h"
 
 using namespace std;
 
 extern User loggedInUser;
 
-void test() {
-	cout << "Test";
-}
 
 void manageUsers();
+void viewCourses();
 void adminCreateUser();
 void listAllTeacher();
 void listAllStudent();
@@ -21,8 +20,9 @@ void deleteUser();
 // Options
 MenuOptions homepageMenu = {
 	{"Manage Users", manageUsers},
-	{"View Courses", test}
+	{"View Courses", viewCourses}
 };
+
 
 MenuOptions manageUsersMenu = {
 	{"Create", adminCreateUser},
@@ -174,6 +174,19 @@ void deleteUser() {
 	system("cls");
 
 	displayUserTable();
+
+	system("pause");
+
+	goBack();
+}
+
+void viewCourses() {
+	cout << "You are currently viewing courses." << endl << endl;
+
+	for (int i = 0; i < courses.size(); i++) {
+		printCourse(courses[i]);
+		cout << "-----------------------------------" << endl;	
+	}
 
 	system("pause");
 

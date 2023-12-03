@@ -132,17 +132,6 @@ vector<User> GetStudents() {
 	return students;
 }
 
-void initialize() {
-	// Create dummy user accounts for testing
-	User adminUser = createUser("Admin", "admin", admin);
-	User teacherUser = createUser("Teacher", "teacher", teacher);
-	User studentUser = createUser("Student", "student", student);
-
-	users.push_back(adminUser);
-	users.push_back(teacherUser);
-	users.push_back(studentUser);
-}
-
 User login() {
 	User user;
 	string id, password;
@@ -202,4 +191,14 @@ void displayUserTable() {
 	}
 
 	std::cout << table.to_string() << std::endl;
+}
+
+// Get User based on id
+User getUserById(string id) {
+	for (User user : users) {
+		if (user.id == id) {
+			return user;
+			break;
+		}
+	}
 }
