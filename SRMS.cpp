@@ -21,6 +21,7 @@
 // Pages
 #include "admin.h"
 #include "teacher.h"
+#include "student.h"
 
 using namespace std;
 
@@ -44,7 +45,7 @@ void homepage() {
 			TeacherScreen();
 			break;
 		case student:
-			// studentHomepage();
+			Studenthomepage();
 			break;
 		default:
 			break;
@@ -78,7 +79,7 @@ void initialize() {
 	Exam midterm = createExam(course, "Midterm", 50);
 	ExamResult midtermResult = createExamResult(midterm, studentUser1, 40);
 
-	// createAttendance(course, studentUser1);
+	createAttendance(course, studentUser1);
 }
 
 
@@ -86,7 +87,7 @@ int main()
 {
 	initialize();
 	// loggedInUser = login();
-	loggedInUser = users[1];
+	loggedInUser = users[2];
 	cout << "Logged in user: " << loggedInUser.name;
 
 	displayScreen(homepage);

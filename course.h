@@ -276,6 +276,19 @@ vector<Course> getCoursesByTeacher(User teacher) {
 	return coursesByTeacher;
 }
 
+/// Get all courses by student
+vector<Course> getCoursesByStudent(User student) {
+	vector<Course> coursesByStudent = {};
+
+	for (Enrollment enrollment : enrollments) {
+		if (enrollment.student == student) {
+			coursesByStudent.push_back(enrollment.course);
+		}
+	}
+
+	return coursesByStudent;
+}
+
 /// <summary>
 /// Show summary of course
 /// </summary>
