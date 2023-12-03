@@ -18,6 +18,7 @@ void listAllStudent();
 void updateUser();
 void deleteUser();
 
+// Options
 MenuOptions homepageMenu = {
 	{"Manage Users", manageUsers},
 	{"View Courses", test}
@@ -31,6 +32,48 @@ MenuOptions manageUsersMenu = {
 	{"Delete", deleteUser }
 };
 
+// helpers
+void listAllTeacher() {
+	displayTeachers();
+
+	system("pause");
+
+	goBack();
+}
+
+void listAllStudent() {
+	displayStudents();
+
+	system("pause");
+
+	goBack();
+}
+
+User chooseUser() {
+	displayUserTable();
+
+	string id;
+	while (true) {
+		cout << "Enter ID or \"B\" to go back: ";
+		cin >> id;
+
+		if (id == "B") {
+			goBack();
+		}
+		else {
+			for (User user : users) {
+				if (user.id == id) {
+					return user;
+					break;
+				}
+			}
+
+			cout << "Invalid ID entered!" << endl << endl;
+		}
+	}
+}
+
+// Screens/Pages
 void adminHomepage() {
 	cout << "Welcome back, " << loggedInUser.name << "!" << endl;
 	cout << "You are currently logged in as an admin." << endl << endl;
@@ -83,75 +126,6 @@ void adminCreateUser() {
 	system("pause");
 
 	goBack();
-}
-
-void listAllTeacher() {
-	fort::char_table table;
-	table << fort::header
-		<< "ID" << "Name" << "Managed Courses" << fort::endr;
-
-	for (User user : GetTeachers()) {
-		table << user.id << user.name << "CCS0003L" << fort::endr;
-	}
-
-	std::cout << table.to_string() << std::endl;
-
-	system("pause");
-
-	goBack();
-}
-
-void listAllStudent() {
-	fort::char_table table;
-	table << fort::header
-		<< "ID" << "Name" << "Enrolled Courses" << fort::endr;
-
-	for (User user : GetStudents()) {
-		table << user.id << user.name << "CCS0003L" << fort::endr;
-	}
-
-	std::cout << table.to_string() << std::endl;
-
-	system("pause");
-
-	goBack();
-}
-
-
-void displayUserTable() {
-	fort::char_table table;
-	table << fort::header
-		<< "ID" << "Name" << "Password" << fort::endr;
-
-	for (User user : users) {
-		table << user.id << user.name << user.password << fort::endr;
-	}
-
-	std::cout << table.to_string() << std::endl;
-}
-
-User chooseUser() {
-	displayUserTable();
-
-	string id;
-	while (true) {
-		cout << "Enter ID or \"B\" to go back: ";
-		cin >> id;
-
-		if (id == "B") {
-			goBack();
-		}
-		else {
-			for (User user : users) {
-				if (user.id == id) {
-					return user;
-					break;
-				}
-			}
-
-			cout << "Invalid ID entered!" << endl << endl;
-		}
-	}
 }
 
 void updateUser() {

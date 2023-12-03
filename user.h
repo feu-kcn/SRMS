@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <algorithm>
+#include "fort.hpp"
 
 using namespace std;
 
@@ -167,3 +168,38 @@ User login() {
 	}
 }
 
+void displayTeachers() {
+	fort::char_table table;
+	table << fort::header
+		<< "ID" << "Name" << "Managed Courses" << fort::endr;
+
+	for (User user : GetTeachers()) {
+		table << user.id << user.name << "CCS0003L" << fort::endr;
+	}
+
+	std::cout << table.to_string() << std::endl;
+}
+
+void displayStudents() {
+	fort::char_table table;
+	table << fort::header
+		<< "ID" << "Name" << "Enrolled Courses" << fort::endr;
+
+	for (User user : GetStudents()) {
+		table << user.id << user.name << "CCS0003L" << fort::endr;
+	}
+
+	std::cout << table.to_string() << std::endl;
+}
+
+void displayUserTable() {
+	fort::char_table table;
+	table << fort::header
+		<< "ID" << "Name" << "Password" << fort::endr;
+
+	for (User user : users) {
+		table << user.id << user.name << user.password << fort::endr;
+	}
+
+	std::cout << table.to_string() << std::endl;
+}
