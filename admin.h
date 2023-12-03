@@ -15,7 +15,7 @@ void manageUsers();
 void adminCreateUser();
 void listAllTeacher();
 void listAllStudent();
-void updateName();
+void updateUser();
 void deleteUser();
 
 MenuOptions homepageMenu = {
@@ -27,8 +27,8 @@ MenuOptions manageUsersMenu = {
 	{"Create", adminCreateUser},
 	{"List All Teacher", listAllTeacher},
 	{"List All Student", listAllStudent},
-	{"Update Name", test},
-	{"Delete", test}
+	{"Update", updateUser},
+	{"Delete", deleteUser }
 };
 
 void adminHomepage() {
@@ -111,6 +111,95 @@ void listAllStudent() {
 	}
 
 	std::cout << table.to_string() << std::endl;
+
+	system("pause");
+
+	goBack();
+}
+
+
+void displayUserTable() {
+	fort::char_table table;
+	table << fort::header
+		<< "ID" << "Name" << "Password" << fort::endr;
+
+	for (User user : users) {
+		table << user.id << user.name << user.password << fort::endr;
+	}
+
+	std::cout << table.to_string() << std::endl;
+}
+
+User chooseUser() {
+	displayUserTable();
+
+	string id;
+	while (true) {
+		cout << "Enter ID or \"B\" to go back: ";
+		cin >> id;
+
+		if (id == "B") {
+			goBack();
+		}
+		else {
+			for (User user : users) {
+				if (user.id == id) {
+					return user;
+					break;
+				}
+			}
+
+			cout << "Invalid ID entered!" << endl << endl;
+		}
+	}
+}
+
+void updateUser() {
+	cout << "You are currently updating a user." << endl << endl;
+
+	User selectedUser = chooseUser();
+
+	string name;
+	string password = "";
+
+	cout << "Enter new name (enter \"KEEP\") if you want to keep previous): ";
+	cin >> name;
+
+	cout << "Enter new password (enter \"KEEP\" if you want to keep previous): ";
+	cin >> password;
+
+	if (password == "KEEP") {
+		password = selectedUser.password;
+	}
+
+	if (name == "KEEP") {
+		name = selectedUser.name;
+	}
+
+	selectedUser.name = name;
+	selectedUser.password = password;
+
+	UpdateUser(selectedUser);
+
+	system("cls");
+
+	displayUserTable();
+
+	system("pause");
+
+	goBack();
+}
+
+void deleteUser() {
+	cout << "You are currently deleting a user." << endl << endl;
+
+	User selectedUser = chooseUser();
+
+	DeleteUser(selectedUser);
+
+	system("cls");
+
+	displayUserTable();
 
 	system("pause");
 

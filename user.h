@@ -99,7 +99,9 @@ void DeleteUser(User user) {
 // Method to update user
 void UpdateUser(User user) {
 	for (int i = 0; i < users.size(); i++) {
-		users[i] = user;
+		if (users[i] == user) {
+			users[i] = user;
+		}
 	}
 }
 

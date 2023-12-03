@@ -42,8 +42,8 @@ void homepage() {
 int main()
 {
 	initialize();
-	loggedInUser = login();
-	// loggedInUser = users[0];
+	// loggedInUser = login();
+	loggedInUser = users[0];
 	cout << "Logged in user: " << loggedInUser.name;
 
 	displayScreen(homepage);
