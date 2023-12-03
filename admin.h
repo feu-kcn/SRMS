@@ -88,6 +88,6 @@ void listAllTeacher() {
 
 }
 
-void listAllStudents() {
+void listAllStudent() {
 
 }

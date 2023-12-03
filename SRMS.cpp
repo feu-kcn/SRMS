@@ -42,7 +42,7 @@ void homepage() {
 int main()
 {
 	initialize();
-	// loggedInUser = login();
+	loggedInUser = login();
 	// loggedInUser = users[0];
 	cout << "Logged in user: " << loggedInUser.name;
 
