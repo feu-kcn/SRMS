@@ -7,6 +7,9 @@
 
 using namespace std;
 
+/// <summary>
+///  Classes
+/// </summary>
 class Course {
 public:
 	string id;
@@ -67,6 +70,9 @@ public:
 	}
 };
 
+/// <summary>
+/// Global variables, from SRMS.cpp
+/// </summary>
 
 extern vector<Course> courses;
 extern vector<Attendance> attendances;
@@ -244,8 +250,6 @@ float getExamScoreByCourseAndStudent(Course course, User student) {
 	return (totalScore / totalMaximumScore) * 100;
 }
 
-
-
 // Get all courses by teacher
 vector<Course> getCoursesByTeacher(User teacher) {
 	vector<Course> coursesByTeacher = {};
@@ -259,6 +263,9 @@ vector<Course> getCoursesByTeacher(User teacher) {
 	return coursesByTeacher;
 }
 
+/// <summary>
+/// Show summary of course
+/// </summary>
 void printCourse(Course course) {
 	cout << "Course ID: " << course.id << endl;
 	cout << "Course Name: " << course.name << endl;
